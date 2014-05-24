@@ -30,3 +30,4 @@ node_modules
 *.out
 results
 npm-debug.log
+sass/compiled
