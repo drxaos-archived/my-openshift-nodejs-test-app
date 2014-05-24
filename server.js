@@ -1,9 +1,13 @@
 #!/bin/env node
 //  OpenShift sample Node application
-var express = require('express');
-var fs = require('fs');
-var sass = require('node-sass');
 var path = require('path');
+
+var express = require('express');
+var sass = require('node-sass');
+var engine = require('ejs-locals');
+
+var fs = require('fs');
+
 
 /**
  *  Define the sample application.
@@ -87,7 +91,7 @@ var WebApp = function () {
 
         self.routes['/'] = function (req, res) {
             res.setHeader('Content-Type', 'text/html');
-            res.send(fs.readFileSync('./index.html'));
+            res.render('index/index.ejs', { title: 'The index page!' })
         };
     };
 
@@ -103,11 +107,15 @@ var WebApp = function () {
         self.app.use(sass.middleware({
             src: path.join(__dirname, 'sass'),
             dest: path.join(__dirname, 'public'),
-            debug: true,
+            debug: false,
             outputStyle: 'compressed'
         }));
 
         self.app.use(express.static(__dirname + '/public'));
+
+        self.app.engine('ejs', engine);
+        self.app.set('views', __dirname + '/views');
+        self.app.set('view engine', 'ejs');
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
