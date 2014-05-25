@@ -91,7 +91,11 @@ var WebApp = function () {
 
         self.routes['/'] = function (req, res) {
             res.setHeader('Content-Type', 'text/html');
-            res.render('index/index.ejs', { title: 'The index page!' })
+            var title = req.query.title;
+            if(typeof title == "undefined" || !title) {
+                title = 'The index page tagline!';
+            }
+            res.render('index/index.ejs', { title: title })
         };
     };
 
