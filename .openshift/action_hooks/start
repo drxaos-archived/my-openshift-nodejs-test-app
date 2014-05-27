@@ -1,5 +1,1 @@
-export
-echo "$@"
-echo START - Fetching github repo...
-cd ~/git/test.git
-git fetch
+echo ==========START=========

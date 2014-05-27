@@ -1,5 +1,6 @@
-export
-echo "$@"
-echo Fetching github repo...
-cd ~/git/test.git
-git fetch
+echo =========PRE_BUILD========
+#export
+#echo "$@"
+#echo Fetching github repo...
+#cd ~/git/test.git
+#git fetch
