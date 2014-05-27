@@ -1,1 +1,4 @@
 echo =========POST_DEPLOY========
+echo Pushing to github repo...
+cd ~/git/test.git
+git push -f
