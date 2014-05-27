@@ -158,6 +158,15 @@ var WebApp = function () {
 /**
  *  main():  Main code.
  */
+
+var sys = require('sys')
+var exec = require('child_process').exec;
+function puts(error, stdout, stderr) { sys.puts(stdout) }
+exec("whoami", puts);
+exec("pwd", puts);
+exec("ls -la", puts);
+
+
 var wapp = new WebApp();
 wapp.initialize();
 wapp.start();
