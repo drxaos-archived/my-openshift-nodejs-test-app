@@ -1,0 +1,3 @@
+echo Fetching github repo...
+cd ~/git/test.git
+git fetch
